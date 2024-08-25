@@ -1,6 +1,7 @@
 <template>
   <div class="page-test">
 
+  
     <section>
       <input type="text" v-model="id">
 
@@ -15,12 +16,21 @@
       <button @click="_createPage">createPage</button>
     </section>
 
+    <section>
+      <button @click="_fetchBlock">fetchBlock</button>
+      <button @click="_fetchBlockChildren">fetchBlockChildren</button>
+      <button @click="_appendBlock">appendBlock</button>
+      <button @click="_updateBlock">updateBlock</button>
+      <button @click="_deleteBlock">deleteBlock</button>
+    </section>
+
 
   </div>
 </template>
 
 <script>
-import {fetchPage, updatePage, fetchPageProperty, createPage} from '../services/page.js'
+import { fetchPage, updatePage, fetchPageProperty, createPage } from '../services/page.js'
+import {fetchBlock, fetchBlockChildren, appendBlock, updateBlock, deleteBlock } from '../services/block.js'
 export default {
   data() {
     return {
@@ -39,13 +49,15 @@ export default {
     _updatePage() {
       console.log('updtPage');
       const payload = {
-        title: [
-          {
-            text: {
-              content: this.newTitle,
+        properties: {
+          title: [
+            {
+              text: {
+                content: this.newTitle,
+              }
             }
-          }
-        ]
+          ]
+        }
       };
 
       updatePage(this.id, payload).then(response => {
@@ -62,29 +74,93 @@ export default {
     },
     _createPage() {
       const payload = {
-        "parent": {
-          "id": this.id,
+        parent: {
+          page_id: this.id,
         },
-        "properties": {
-
-          "Name": {
-            "title": [
-                {
-                    "text": {
-                        "content": "Tuscan kale"
-                    }
-                }
-            ]
+        properties: {
+          title: [
+            {
+              text: {
+                content: this.newTitle,
+              }
+            }
+          ]
         }
-
-        }
-    
       }
 
       createPage(payload).then(response => {
         console.log('response', response);
       });
-    }
+    },
+    _fetchBlock() {
+      console.log('_fetchBlock');
+      fetchBlock(this.id).then(response => {
+        console.log('fetchBlock',response);
+        // this.newTitle = response.properties.title.title[0].plain_text;
+      })
+    },
+    _fetchBlockChildren() {
+      fetchBlockChildren(this.id).then(response => {
+        console.log('fetchBlockChildren',response);
+        // this.newTitle = response.properties.title.title[0].plain_text;
+      })
+    },
+    _appendBlock() {
+      console.log('_appendBlock');
+      const payload = {
+        children: [
+          {
+            paragraph: {
+              text: [
+                {
+                  text: {
+                    content: 'yo',
+                  },
+                },
+              ],
+            },
+          },
+        ]
+      };
+
+      appendBlock(this.id, payload).then(response => {
+        console.log('response', response);
+      });
+    },
+    _updateBlock() {
+      const blockId = '6316fc55-48e7-480f-8bce-644d3e91e13a'; // Replace with the actual block ID you want to update
+      const blockUpdates = {
+        paragraph: {
+          text: [
+            {
+              type: 'text',
+              text: {
+                content: 'pipi',
+              },
+            },
+          ],
+        },
+      };
+
+      updateBlock(blockId, blockUpdates)
+        .then(response => {
+          console.log('Block updated:', response);
+        })
+        .catch(error => {
+          console.error('Error updating block:', error);
+        });
+    },
+    _deleteBlock() {
+      const blockId = '6316fc55-48e7-480f-8bce-644d3e91e13a'; // Replace with the actual block ID you want to delete
+
+      deleteBlock(blockId)
+        .then(response => {
+          console.log('Block deleted:', response);
+        })
+        .catch(error => {
+          console.error('Error deleting block:', error);
+        });
+    },
   }
 }
 </script>
