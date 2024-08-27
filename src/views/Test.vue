@@ -1,6 +1,5 @@
 <template>
   <div class="page-test">
-
   
     <section>
       <input type="text" v-model="id">
@@ -24,6 +23,19 @@
       <button @click="_deleteBlock">deleteBlock</button>
     </section>
 
+    <section>
+      <button @click="_fetchDatabase">fetchDatabase</button>
+    </section>
+
+    <hr>
+
+    <ul class="results">
+      <li v-for="item in pageChildren" :key="item.id">
+        <h6>{{ item.type }}</h6>
+        <div>{{ item.id }}</div>
+      </li>
+    </ul>
+
 
   </div>
 </template>
@@ -31,11 +43,14 @@
 <script>
 import { fetchPage, updatePage, fetchPageProperty, createPage } from '../services/page.js'
 import {fetchBlock, fetchBlockChildren, appendBlock, updateBlock, deleteBlock } from '../services/block.js'
+import {fetchDatabase } from '../services/databases.js'
 export default {
   data() {
     return {
       id: '8a4268397a4545dca8910d682c84715f',
+      dbid: 'c80a98bc-461f-417d-9152-3f20ac809cb1',
       newTitle: '',
+      pageChildren: [],
     }
   },
   methods: {
@@ -102,6 +117,7 @@ export default {
     _fetchBlockChildren() {
       fetchBlockChildren(this.id).then(response => {
         console.log('fetchBlockChildren',response);
+        this.pageChildren = response.results;
         // this.newTitle = response.properties.title.title[0].plain_text;
       })
     },
@@ -161,6 +177,13 @@ export default {
           console.error('Error deleting block:', error);
         });
     },
+    _fetchDatabase() {
+      console.log('_fetchDatabase');
+      fetchDatabase(this.dbid).then(response => {
+        console.log('fetchDatabase',response);
+        // this.newTitle = response.properties.title.title[0].plain_text;
+      })
+    }
   }
 }
 </script>
@@ -174,6 +197,12 @@ export default {
     @apply flex items-center gap-4 flex-wrap p-2 border m-2; 
     button {
       @apply p-1 border;
+    }
+  }
+  .results {
+    outline: 1px solid;;
+    li {
+      @apply flex items-center text-sm gap-2 mb-2;
     }
   }
 }
