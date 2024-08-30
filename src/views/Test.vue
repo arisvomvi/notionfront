@@ -1,10 +1,47 @@
 <template>
   <div class="page-test">
-  
+
+    <h1>Admin page</h1>
+    <div>{{ adminId }}</div>
+
+    <br>
+
+    <h3>Pages</h3>
     <section>
+      <input type="text" v-model="pageId" placeholder="page id">
+      <button :disabled="pageId.length == 0" @click="_fetchPage(pageId)">fetch</button>
+    </section>
+
+    <h3>Blocks</h3>
+    <section>
+      <input type="text" v-model="blockId" placeholder="block id">
+      <button :disabled="blockId.length == 0" @click="_fetchBlock(blockId)">fetch</button>
+    </section>
+
+    <h3>Databases</h3>
+    <section>
+      <input type="text" v-model="databaseId" placeholder="database id">
+      <button :disabled="databaseId.length == 0" @click="_fetchDatabase(databaseId)">fetch</button>
+    </section>
+
+    
+
+    <ul class="results">
+      <li v-for="item in adminBlockChildren" :key="item.id">
+        <h6>{{ item.type }}</h6>
+        <div @click="copyText(item.id)">{{ item.id }}</div>
+      </li>
+    </ul> 
+  
+    <!-- <section>
       <input type="text" v-model="id">
 
       <input type="text" v-model="newTitle" placeholder="newTitle">
+    </section>
+
+    <section>
+      <input type="text" v-model="databaseId">
+      <button @click="querydatabase">querydatabase</button>
     </section>
     
 
@@ -25,16 +62,12 @@
 
     <section>
       <button @click="_fetchDatabase">fetchDatabase</button>
+      <button @click="_queryDatabase">queryDatabase</button>
     </section>
 
     <hr>
 
-    <ul class="results">
-      <li v-for="item in pageChildren" :key="item.id">
-        <h6>{{ item.type }}</h6>
-        <div>{{ item.id }}</div>
-      </li>
-    </ul>
+    -->
 
 
   </div>
@@ -43,26 +76,35 @@
 <script>
 import { fetchPage, updatePage, fetchPageProperty, createPage } from '../services/page.js'
 import {fetchBlock, fetchBlockChildren, appendBlock, updateBlock, deleteBlock } from '../services/block.js'
-import {fetchDatabase } from '../services/databases.js'
+import {fetchDatabase, queryDatabase } from '../services/databases.js'
 export default {
   data() {
     return {
-      id: '8a4268397a4545dca8910d682c84715f',
-      dbid: 'c80a98bc-461f-417d-9152-3f20ac809cb1',
-      newTitle: '',
-      pageChildren: [],
+      databaseId: '',
+      pageId: '',
+      blockId: '',
+
+      adminId: '8a4268397a4545dca8910d682c84715f',
+      adminBlockChildren: [],
     }
   },
+  mounted() {
+    fetchBlockChildren(this.adminId).then(response => {
+      console.log(response);
+      this.adminBlockChildren = response.results;
+    });
+  },
   methods: {
-    _fetchPage() {
-      console.log('getPage');
-      fetchPage(this.id).then(response => {
+    copyText(text) {
+      navigator.clipboard.writeText(text);
+    },
+
+    _fetchPage(id) {
+      fetchPage(id).then(response => {
         console.log(response);
-        this.newTitle = response.properties.title.title[0].plain_text;
       })
     },
     _updatePage() {
-      console.log('updtPage');
       const payload = {
         properties: {
           title: [
@@ -80,7 +122,6 @@ export default {
       });
     },
     _fetchPageProperty() {
-      console.log('_fetchPageProperty');
       const payload = 'title'
 
       fetchPageProperty(this.id, payload).then(response => {
@@ -107,22 +148,18 @@ export default {
         console.log('response', response);
       });
     },
+
     _fetchBlock() {
-      console.log('_fetchBlock');
-      fetchBlock(this.id).then(response => {
-        console.log('fetchBlock',response);
-        // this.newTitle = response.properties.title.title[0].plain_text;
+      fetchBlock(id).then(response => {
+        console.log(response);
       })
     },
-    _fetchBlockChildren() {
-      fetchBlockChildren(this.id).then(response => {
-        console.log('fetchBlockChildren',response);
-        this.pageChildren = response.results;
-        // this.newTitle = response.properties.title.title[0].plain_text;
+    _fetchBlockChildren(id) {
+      fetchBlockChildren(id).then(response => {
+        console.log(response);
       })
     },
     _appendBlock() {
-      console.log('_appendBlock');
       const payload = {
         children: [
           {
@@ -138,13 +175,11 @@ export default {
           },
         ]
       };
-
       appendBlock(this.id, payload).then(response => {
-        console.log('response', response);
+        console.log(response);
       });
     },
-    _updateBlock() {
-      const blockId = '6316fc55-48e7-480f-8bce-644d3e91e13a'; // Replace with the actual block ID you want to update
+    _updateBlock(id) {
       const blockUpdates = {
         paragraph: {
           text: [
@@ -158,9 +193,9 @@ export default {
         },
       };
 
-      updateBlock(blockId, blockUpdates)
+      updateBlock(id, blockUpdates)
         .then(response => {
-          console.log('Block updated:', response);
+          console.log(response);
         })
         .catch(error => {
           console.error('Error updating block:', error);
@@ -177,13 +212,36 @@ export default {
           console.error('Error deleting block:', error);
         });
     },
-    _fetchDatabase() {
-      console.log('_fetchDatabase');
-      fetchDatabase(this.dbid).then(response => {
-        console.log('fetchDatabase',response);
-        // this.newTitle = response.properties.title.title[0].plain_text;
-      })
-    }
+
+    _fetchDatabase(id) {
+      fetchDatabase(id).then(response => {
+        console.log(response);
+      });
+    },
+    _queryDatabase(id) {
+      const query = {
+        // filter: {
+        //   property: 'Status',
+        //   select: {
+        //     equals: 'Completed'
+        //   }
+        // },
+        // sorts: [
+        //   {
+        //     property: 'Name',
+        //     direction: 'ascending'
+        //   }
+        // ]
+      };
+
+      queryDatabase(id, query)
+        .then(response => {
+          console.log('Query result:', response.results);
+        })
+        .catch(error => {
+          console.error('Error querying database:', error);
+        });
+    },
   }
 }
 </script>
