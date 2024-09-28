@@ -1,0 +1,20 @@
+@mixin hover() {
+  &:hover {
+    @media (hover: hover) {
+      @content;
+    }
+  }
+}
+
+@mixin hover-active($selectors: ('&:active', '&.active')) {
+  @include hover { @content; }
+
+  $selectors_str: '';
+  @each $selector in $selectors {
+    $selectors_str: $selectors_str + if($selectors_str == '', '', ', ') + $selector;
+  }
+
+  #{$selectors_str} {
+    @content;
+  }
+}

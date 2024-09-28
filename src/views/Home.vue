@@ -1,14 +1,19 @@
 <template>
   <div>
-    <h1>Home Page</h1>
-    <!-- <p>Welcome to the home page!</p> -->
+    
+    <gng-button v-for="i in 4" text="mybutton" />
+
+
   </div>
 </template>
 
 <script>
 import { fetchPage } from '@/services/page'
 
+// import MyButton from '../components/base/Button.vue'
+
 export default {
+  // components: { MyButton },
   name: 'Home',
   // data() {
   //   return {

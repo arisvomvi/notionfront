@@ -1,0 +1,71 @@
+
+
+
+@mixin button-state($variant, $state) {
+  &.#{$state} {
+    @apply bg-color-#{$state} border-color-#{$state} text-color-surface;
+
+    @include hover {
+      @apply  bg-color-#{$state}-accent border-color-#{$state}-accent;
+    }
+  }
+}
+
+.btn {
+  @apply flex items-center gap-6 rounded-xl duration-150 border;
+  margin-bottom: 10px;
+
+  &--primary {
+    @apply bg-color-primary border-color-primary text-color-surface;
+
+    @include hover {
+      @apply bg-color-accent border-color-accent;
+    }
+
+    @include button-state('primary', 'warning');
+    @include button-state('primary', 'error');
+    @include button-state('primary', 'success');
+    @include button-state('primary', 'info');
+
+    &.disabled {
+      @apply bg-color-disabled border-color-disabled cursor-not-allowed;
+      @include hover {
+        @apply bg-color-disabled border-color-disabled;
+      }
+    }
+  }
+
+  &--secondary {
+    @apply bg-color-surface border-color-primary text-color-primary;
+
+    @include hover {
+      @apply text-color-surface bg-color-primary;
+    }
+    
+    @include button-state('secondary', 'warning');
+    @include button-state('secondary', 'error');
+    @include button-state('secondary', 'success');
+    @include button-state('secondary', 'info');
+
+    &.disabled {
+      @apply text-color-disabled border-color-disabled bg-color-surface cursor-not-allowed;
+      @include hover {
+        @apply text-color-disabled border-color-disabled;
+      }
+    }
+  }
+
+  &--large {
+    @apply px-6 py-4
+  }
+
+  &--medium {
+    @apply px-4 py-3
+  }
+
+  &--small {
+    @apply px-3 py-2
+  }
+
+  
+}

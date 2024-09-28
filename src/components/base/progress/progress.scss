@@ -1,0 +1,19 @@
+.progress {
+  $progress: &;
+  div {
+    @apply mb-4;
+  }
+  &__bar {
+    @apply block relative bg-color-accent rounded-full h-[6px];
+    &:before {
+      content: '';
+      @apply absolute top-0 bottom-0 left-0 bg-color-primary duration-700 rounded-full;
+      width: var(--progress);
+    }
+  }
+  &--secondary {
+    #{$progress}__bar {
+      @apply bg-color-surface;
+    }
+  }
+}

@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style>
-nav {
+/* nav {
   outline: 1px solid red;;
   
   padding: 8px;
@@ -36,5 +36,5 @@ nav ul {
   align-items: center;
   gap: 16px;
   list-style-type: none;
-}
+} */
 </style>

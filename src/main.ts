@@ -1,10 +1,14 @@
 import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
+import App from '@/App.vue';
+import router from '@/router';
 // import { initpage } from '@/services/page';
-import './styles/app.scss';
+// import './styles/app.scss';
 
 const app = createApp(App);
+
+import GlobalComponents from './plugins/global-components.js'; // Import your plugin
+app.use(GlobalComponents);
+
 
 // console.log('sdsds');
 

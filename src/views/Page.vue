@@ -34,14 +34,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
-@import '../styles/pages/article.scss';
-// .cover {
-//   height: 400px;
-// }
-// .cover img {
-//   object-fit: cover;
-//   width: 100%;
-//   height: 100%;
-// }
-</style>
+

@@ -1,7 +1,12 @@
-// assets/styles/main.scss
+
+
+
+
+
+@import '@styles/mixins/hover';
+
+@import '@styles/layout/layout';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-// @import '../styles/pages/article.scss'

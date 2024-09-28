@@ -1,0 +1,24 @@
+.breadcrumb {
+  @apply mb-4;
+  ol {
+    @apply list-none;
+    li {
+      @apply inline-block pr-2 text-color-text-secondary text-sm last:pr-0;
+      &:after {
+        @apply content-['/'] pl-2 text-color-primary;
+        &:last-child {
+          @apply hidden;
+        }
+      }
+      a {
+        @apply inline-block text-color-primary;
+      }
+    }
+  }
+
+  &.breadcrumb-scrollable {
+    ol {
+      @apply overflow-x-auto whitespace-nowrap pb-2;
+    }
+  }
+}
