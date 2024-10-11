@@ -1,0 +1,76 @@
+.form-field {
+  @apply flex items-start gap-3 px-4 py-2 border rounded border-color-stroke bg-color-surface;
+
+  // outline: 1px solid red;
+  // background-color: lightblue;
+
+  .icon {
+    @apply w-5 h-5 bg-color-secondary mt-2;
+  }
+  &:has(.type-checkbox) .icon,
+  &:has(.type-radio) .icon {
+    @apply mt-0.5;
+  }
+
+  .input-wrap{
+    flex: 1
+  }
+
+  &--password {
+    .icon {
+      @apply cursor-pointer;
+    }
+  }
+
+  &--checkbox,
+  &--radio {
+    @apply border-transparent;
+    .input-wrap {
+      label {
+        @apply min-h-6
+      }
+    }
+    
+  }
+
+  &.error {
+    @apply border-color-error;
+    label {
+      @apply text-color-error;
+    }
+  }
+
+  &.warning {
+    @apply border-color-warning;
+    label {
+      @apply text-color-warning;
+    }
+  }
+
+  &.success {
+    @apply border-color-success;
+    label {
+      @apply text-color-success;
+    }
+  }
+
+  &.info {
+    @apply border-color-info;
+    label {
+      @apply text-color-info;
+    }
+
+  }
+
+  &.disabled {
+    @apply bg-color-disabled cursor-not-allowed;
+     > * {
+      @apply pointer-events-none;
+     }
+  }
+
+  // @include hover() {
+  //   background-color: blue;
+  //   color: white;
+  // }
+}

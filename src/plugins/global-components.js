@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+// import { defineComponent } from 'vue';
 
 // Automatically import all components from the 'components/base' directory
 const requireComponent = import.meta.glob('@components/base/**/*.vue', { eager: true });

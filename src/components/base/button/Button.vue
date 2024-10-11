@@ -1,8 +1,8 @@
 <template>
   <button class="btn" :class="btnClasses" @click="ev_click" :type="type" :disabled="disabled">
-    <div class="w-5 h-5 bg-color-secondary"></div>
+    <div v-if="icon" class="w-5 h-5 bg-color-secondary"></div>
     {{ text }}
-    <div class="w-5 h-5 bg-color-secondary"></div>
+    <div v-if="iconRight" class="w-5 h-5 bg-color-secondary"></div>
   </button>
 </template>
 
@@ -37,6 +37,14 @@ export default {
       type: String,
       default: 'button',
       validator: value => ['button', 'submit'].includes(value),
+    },
+    icon: {
+      type: String,
+      default: null,
+    },
+    iconRight: {
+      type: String,
+      default: null,
     },
   },
   methods: {

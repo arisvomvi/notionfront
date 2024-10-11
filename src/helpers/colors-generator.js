@@ -18,4 +18,4 @@ export function generateTailwindColors(colors) {
 
 export const generatedSCSS = generateSCSSVariables(colors);
 export const generatedCSS = `:root {\n${generateCSSVariables(colors)}\n}`;
-export const generatedTailwind = generateTailwindColors(colors);
+export const generatedTailwindColors = generateTailwindColors(colors);

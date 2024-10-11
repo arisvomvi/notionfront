@@ -9,8 +9,9 @@ export const colors = {
 
   surface: '#fff',
 
-  stroke: '#dcdcdc',
-  disabled: '#787575',
+  stroke: '#DDE2E5',
+  disabled: '#F2F4F5',
+  'disabled-text': '#5E6366',
 
   info: '#4C9CE8',
   'info-accent': '#3A7BBF',

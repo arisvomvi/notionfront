@@ -3,7 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-import { generatedSCSS, generatedCSS } from './src/helpers/colors-generator.js';
+// import { generatedSCSS, generatedCSS } from './src/helpers/colors-generator.js';
 
 export default defineConfig({
   plugins: [
@@ -26,11 +26,13 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-          ${generatedSCSS}
-          ${generatedCSS}
+          
           @import "@styles/app.scss";
         `,
       },
     },
   },
 })
+
+// ${generatedCSS}
+          // ${generatedCSS}

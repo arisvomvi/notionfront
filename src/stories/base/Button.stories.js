@@ -26,3 +26,13 @@ export const Primary = {
     text: 'button',
   },
 };
+
+export const Bvb = {
+  args:{
+    text:"buttonvb",
+    variant:"primary",
+    size:"medium",
+    disabled:false,
+    type:"button"
+  }
+};
