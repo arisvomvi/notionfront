@@ -11,10 +11,10 @@
 </template>
 <!-- :class="[templateClasses('progress')]" -->
 <script>
-import {defineComponent} from 'vue';
+// import {defineComponent} from 'vue';
 // import mixinTemplate from '~/mixins/template'
 
-export default defineComponent({
+export default {
 	name: 'Progress',
 	// mixins: [mixinTemplate],
 	props: {
@@ -26,7 +26,7 @@ export default defineComponent({
 	methods: {
 
 	},
-})
+}
 </script>
 
 <style lang="scss">

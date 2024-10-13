@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import App from '@/App.vue';
-import router from '@/router';
+// import router from '@/router';
 // import { initpage } from '@/services/page';
 // import './styles/app.scss';
 
@@ -9,14 +9,13 @@ const app = createApp(App);
 import GlobalComponents from './plugins/global-components.js'; // Import your plugin
 app.use(GlobalComponents);
 
-
 // console.log('sdsds');
 
 // Call the initpage function and create routes dynamically
 // initpage('8a4268397a4545dca8910d682c84715f')
 //   .then(response => {
 //     console.log('response', response);
-    
+
 //     console.log(response.pages.results);
 
 //     // Dynamically create routes based on the response
@@ -44,6 +43,5 @@ app.use(GlobalComponents);
 //     app.mount('#app');
 //   });
 
-
-  app.use(router);
-  app.mount('#app');
+// app.use(router);
+app.mount('#app');
