@@ -31,9 +31,9 @@
 import { ref } from 'vue';
 import { inject } from 'vue';
 // import Navigation from './components/Navigation.vue';
-import { fetchPage, updatePage, fetchPageProperty, createPage } from '@services/page.js'
-import {fetchBlock, fetchBlockChildren, appendBlock, updateBlock, deleteBlock } from '@services/block.js'
-import {fetchDatabase, queryDatabase } from '@services/databases.js'
+// import { fetchPage, updatePage, fetchPageProperty, createPage } from '@services/page.js'
+// import {fetchBlock, fetchBlockChildren, appendBlock, updateBlock, deleteBlock } from '@services/block.js'
+// import {fetchDatabase, queryDatabase } from '@services/databases.js'
 export default {
   components: {
     // Navigation
@@ -46,14 +46,14 @@ export default {
     };
   },
   mounted() {
-    fetchBlockChildren(this.adminId).then(response => {
-      console.log('fetchBlockChildren',response);
-      this.adminBlockChildren = response.results;
-    });
+    // fetchBlockChildren(this.adminId).then(response => {
+    //   console.log('fetchBlockChildren',response);
+    //   this.adminBlockChildren = response.results;
+    // });
 
-    fetchDatabase('11db4ea9-8b62-8017-9992-e56740d566d0').then(response => {
-        console.log('fetchDatabase',response);
-      });
+    // fetchDatabase('11db4ea9-8b62-8017-9992-e56740d566d0').then(response => {
+    //     console.log('fetchDatabase',response);
+    //   });
 
     // queryDatabase('11db4ea9-8b62-8017-9992-e56740d566d0').then(response => {
     //   console.log('queryDatabase');
@@ -98,18 +98,18 @@ export default {
     };
   },
   computed: {
-    fields() {
-      let x = this.adminBlockChildren.find(el => el.type == 'code');
-      if (x) {
-        let str = x.code.text[0].text.content
-        console.log(str);
+    // fields() {
+    //   let x = this.adminBlockChildren.find(el => el.type == 'code');
+    //   if (x) {
+    //     let str = x.code.text[0].text.content
+    //     console.log(str);
         
-        let fields = JSON.parse(str)
-        console.log(fields);
-        return fields
-      }
-      return []
-    }
+    //     let fields = JSON.parse(str)
+    //     console.log(fields);
+    //     return fields
+    //   }
+    //   return []
+    // }
   },
 
 };
