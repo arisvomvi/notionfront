@@ -1,6 +1,6 @@
 <template>
 
-Hello - !
+Hello:
 {{ text }}
 
 <gng-form-control v-model="text" />
@@ -44,6 +44,7 @@ export default {
     };
   },
   mounted() {
+    console.log('Yo mounted');
     // fetchBlockChildren(this.adminId).then(response => {
     //   console.log('fetchBlockChildren',response);
     //   this.adminBlockChildren = response.results;
