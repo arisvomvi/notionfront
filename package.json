@@ -11,7 +11,8 @@
     "type-check": "vue-tsc --build --force",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "extract-colors": "node src/extract-colors.js"
+    "extract-colors": "node src/extract-colors.js",
+    "duper": "vite build && cp dist/assets/*.js duper/embedded.js && echo '<script src=\"embedded.js\"></script>' > duper/index.html"
   },
   "dependencies": {
     "axios": "^1.7.2",
