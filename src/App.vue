@@ -1,11 +1,9 @@
 <template>
 
-{{ fields }}
+Hello - !
+{{ text }}
 
-<gng-form-control v-for="field in fields" v-bind="field"
-  
-  
-  v-model="text" />
+<gng-form-control v-model="text" />
   <!-- :type="field.type" 
   state="warning" 
   :label="field.name" 
