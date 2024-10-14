@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
-  base: './', // This ensures relative paths for assets
+  base: './',
   plugins: [
     vue(),
   ],
@@ -28,5 +28,5 @@ export default defineConfig({
         `,
       },
     },
-  },
+  },  
 })

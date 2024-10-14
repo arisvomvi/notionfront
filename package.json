@@ -11,8 +11,7 @@
     "type-check": "vue-tsc --build --force",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "extract-colors": "node src/extract-colors.js",
-    "duper": "node src/plugins/duper.js"
+    "extract-colors": "node src/extract-colors.js"
   },
   "dependencies": {
     "axios": "^1.7.2",
