@@ -1,8 +1,10 @@
 <template>
   <div>
-    Hellos: {{ text }}
+    YO: {{ text }}
 
-    <gng-form-control state="error" message="pipi" label="mylae" v-model="text" />
+    <gng-form-control state="error" message="pipi" label="mylae" v-model="text" icon="ko" />
+
+    <gng-slider />
   </div>
 </template>
 
