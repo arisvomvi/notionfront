@@ -5,6 +5,9 @@
     <gng-form-control state="error" message="pipi" label="mylae" v-model="text" icon="ko" />
 
     <gng-slider />
+
+    <gng-form />
+
   </div>
 </template>
 
