@@ -5,10 +5,9 @@
     @swiper="onSwiper"
     @slideChange="onSlideChange"
   >
-    <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-    ...
+    <swiper-slide><img src="https://picsum.photos/400/300" /></swiper-slide>
+    <swiper-slide><img src="https://picsum.photos/401/300" /></swiper-slide>
+    <swiper-slide><img src="https://picsum.photos/402/300" /></swiper-slide>
   </swiper>
 </template>
 <script>
