@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Standalone Component</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  <script src="./dist/exp-626.umd.js"></script> <!-- Your bundled component -->
+  <style>
+    /* You can add global or additional styles here */
+  </style>
+</head>
+<body>
+  
+  asdadad
+  <exp-626 type="sliders"></exp-626>
+
+<div id="duper"></div>
+<!-- <gng-button text="lal"></gng-button> -->
+<gng-form-control label="koko"  />
+  
+  <script>
+    console.log('sdfsfsfd')
+  const { createApp } = Vue;
+    
+
+    // Access the registerCustomComponent function from the global variable
+    const { registerCustomComponent } = window.Exp626;
+
+    // Check if the function is available
+    if (registerCustomComponent) {
+      const app = createApp({});
+      registerCustomComponent(app);
+      app.mount('#duper'); // Mount the Vue app
+    } else {
+      console.error('registerCustomComponent is not defined');
+    }
+  </script>
+</body>
+</html>

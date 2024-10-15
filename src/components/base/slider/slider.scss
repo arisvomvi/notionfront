@@ -1,0 +1,18 @@
+
+
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+.slider {
+  @apply flex items-center gap-4;
+  outline: 1px solid red;;
+  .swiper {
+    outline: 1px solid black;
+    // margin: 0 20px;;
+    .swiper-slide {
+      // min-height: 200px;
+      outline: 1px solid red;
+    }
+  }
+}

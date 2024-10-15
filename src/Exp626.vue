@@ -1,13 +1,10 @@
 <template>
-  <div>
+  <div class="p-4">
     YO: {{ text }}
-
-    <gng-form-control state="error" message="pipi" label="mylae" v-model="text" icon="ko" />
-
-    <gng-slider />
-
-    <gng-form />
-
+dsds
+    <gng-form-control label="dsdsdsd"  />
+    
+<!-- <gng-button /> -->
   </div>
 </template>
 

@@ -7,6 +7,23 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  build: {
+    lib: {
+      entry: './src/main.js',  // Point to your entry JS file
+      name: 'Exp626',
+      fileName: (format) => `exp-626.${format}.js`,
+    },
+    rollupOptions: {
+      output: {
+        globals: {
+          vue: 'Vue',
+        },
+      },
+    },
+  },
+  define: {
+    'process.env': {}
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

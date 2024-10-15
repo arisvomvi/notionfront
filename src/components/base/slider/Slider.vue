@@ -1,22 +1,27 @@
 <template>
-  <swiper
-    :slides-per-view="auto"
-    :space-between="50"
-    @swiper="onSwiper"
-    @slideChange="onSlideChange"
-  >
-    <swiper-slide><img src="https://picsum.photos/400/300" /></swiper-slide>
-    <swiper-slide><img src="https://picsum.photos/401/300" /></swiper-slide>
-    <swiper-slide><img src="https://picsum.photos/402/300" /></swiper-slide>
-  </swiper>
+  <div class="slider">
+    <gng-button icon="<-" />
+    <swiper
+      :navigation="true"
+      :slides-per-view="'auto'"
+      :pagination="true" :modules="modules"
+      :space-between="50"
+      @swiper="onSwiper"
+      @slideChange="onSlideChange"
+    >
+      <swiper-slide><img src="https://picsum.photos/1200/600" /></swiper-slide>
+      <swiper-slide><img src="https://picsum.photos/1210/600" /></swiper-slide>
+      <swiper-slide><img src="https://picsum.photos/1220/600" /></swiper-slide>
+    </swiper>
+    <gng-button icon="->" />
+  </div>
 </template>
 <script>
   // Import Swiper Vue.js components
   import { Swiper, SwiperSlide } from 'swiper/vue';
-
+  import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
   // Import Swiper styles
-  import 'swiper/css';
-
+  
   export default {
     name: 'Slider',
     components: {
@@ -33,18 +38,14 @@
       return {
         onSwiper,
         onSlideChange,
+        modules: [Navigation, Pagination, Scrollbar, A11y],
       };
     },
   };
 </script>
 
 <style lang="scss">
-.swiper {
-  outline: 1px solid black;
-  margin: 0 20px;;
-  .swiper-slide {
-    min-height: 200px;
-    outline: 1px solid red;
-  }
-}
+@import './slider.scss';
+
+
 </style>
