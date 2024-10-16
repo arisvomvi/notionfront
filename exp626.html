@@ -11,30 +11,41 @@
   </style>
 </head>
 <body>
-  
-  asdadad
   <exp-626 type="sliders"></exp-626>
+  <div id="duper">
+    <gng-button text="btna text" icon="lll"></gng-button>
+  </div>
 
-<div id="duper"></div>
-<!-- <gng-button text="lal"></gng-button> -->
-<gng-form-control label="koko"  />
+  <div id="app">
+    <exp-626 type="sliders"></exp-626> <!-- Use your custom web component -->
+    <gng-button text="koko text" icon="lll"></gng-button>
+  </div>
+  
+  
+  <!-- asdadad
+   <gng-button text="btn text" icon="lll" />
+  
+
+
+<gng-button text="lal"></gng-button> -->
+<!-- <gng-form-control label="koko"  /> -->
   
   <script>
-    console.log('sdfsfsfd')
-  const { createApp } = Vue;
+    // console.log('sdfsfsfd')
+  // const { createApp } = Vue;
     
 
-    // Access the registerCustomComponent function from the global variable
-    const { registerCustomComponent } = window.Exp626;
+  //   // Access the registerCustomComponent function from the global variable
+  //   const { registerCustomComponent } = window.Exp626;
 
-    // Check if the function is available
-    if (registerCustomComponent) {
-      const app = createApp({});
-      registerCustomComponent(app);
-      app.mount('#duper'); // Mount the Vue app
-    } else {
-      console.error('registerCustomComponent is not defined');
-    }
+  //   // Check if the function is available
+  //   if (registerCustomComponent) {
+  //     const app = createApp({});
+  //     registerCustomComponent(app);
+  //     app.mount('#duper'); // Mount the Vue app
+  //   } else {
+  //     console.error('registerCustomComponent is not defined');
+  //   }
   </script>
 </body>
 </html>

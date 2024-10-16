@@ -1,10 +1,10 @@
 <template>
   <div class="p-4">
-    YO: {{ text }}
-dsds
-    <gng-form-control label="dsdsdsd"  />
-    
-<!-- <gng-button /> -->
+    <!-- YO: {{ text }} -->
+<!-- dsds -->
+    <!-- <gng-form-control label="dsdsdsd"  /> -->
+    mesa sto xxp
+    <gng-button text="mesa sto xxp" icon="lll" />
   </div>
 </template>
 
@@ -14,7 +14,7 @@ import { ref, inject } from 'vue';
 export default {
 
   mounted() {
-    console.log('Component mounted');
+    console.log('EXP Component mounted');
   },
 
   data() {
